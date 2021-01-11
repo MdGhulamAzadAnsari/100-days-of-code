@@ -9,4 +9,4 @@
 8. [Day 8](Day%20008%20-%20Beginner%20-%20Function%20Parameters%20%26%20Caesar%20Cipher)
 9. [Day 9](Day%20009%20-%20Beginner%20-%20Dictionaries%2C%20Nesting%20and%20the%20Secret%20Auction)
 10. [Day 10](Day%20010%20-%20Beginner%20-%20Functions%20with%20Outputs)
-11. [Day 11] (Day%20011%20-%20Beginner%20-%20The%20Blackjack%20Capstone%20Project)
+11. [Day 11](Day%20011%20-%20Beginner%20-%20The%20Blackjack%20Capstone%20Project)
