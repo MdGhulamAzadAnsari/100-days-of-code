@@ -13,3 +13,4 @@
 12. [Day 12](Day%20012%20%20-%20Beginner%20-%20Scope%20%26%20Number%20Guessing%20Game)
 13. [Day 13](Day%20013%20-%20Beginner%20-%20Debugging%20How%20to%20Find%20and%20Fix%20Errors%20in%20your%20Code)
 14. [Day 14](Day%20014%20-%20Beginner%20-%20Higher%20Lower%20Game%20Project)
+15. [Day 15](Day%20015%20-%20Intermediate%20-%20Local%20Development%20Environment%20Setup%20%26%20the%20Coffee%20Machine)
