@@ -16,3 +16,4 @@
 15. [Day 15](Day%20015%20-%20Intermediate%20-%20Local%20Development%20Environment%20Setup%20%26%20the%20Coffee%20Machine)
 16. [Day 16](Day%20016%20%20-%20Intermediate%20-%20Object%20Oriented%20Programming%20(OOP))
 17. [Day 17](Day%2017%20-%20Intermediate%20-%20The%20Quiz%20Project%20%26%20the%20Benefits%20of%20OOP)
+18. [Day 18](Day%20018%20-%20Intermediate%20-%20Turtle%20%26%20the%20Graphical%20User%20Interface%20(GUI))
