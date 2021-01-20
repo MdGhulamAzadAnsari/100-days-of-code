@@ -18,3 +18,4 @@
 17. [Day 17](Day%2017%20-%20Intermediate%20-%20The%20Quiz%20Project%20%26%20the%20Benefits%20of%20OOP)
 18. [Day 18](Day%20018%20-%20Intermediate%20-%20Turtle%20%26%20the%20Graphical%20User%20Interface%20(GUI))
 19. [Day 19](Day%20019%20-%20Intermediate%20-%20Instances%2C%20State%20and%20Higher%20Order%20Functions)
+20. [Day 20](https://github.com/MdGhulamAzadAnsari/Snake-Game)
