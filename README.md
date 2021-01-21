@@ -19,3 +19,4 @@
 18. [Day 18](Day%20018%20-%20Intermediate%20-%20Turtle%20%26%20the%20Graphical%20User%20Interface%20(GUI))
 19. [Day 19](Day%20019%20-%20Intermediate%20-%20Instances%2C%20State%20and%20Higher%20Order%20Functions)
 20. [Day 20](https://github.com/MdGhulamAzadAnsari/Snake-Game)
+21. [Day 21](https://github.com/MdGhulamAzadAnsari/Snake-Game)
