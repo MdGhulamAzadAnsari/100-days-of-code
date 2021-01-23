@@ -21,5 +21,5 @@
 20. [Day 20](https://github.com/MdGhulamAzadAnsari/Snake-Game)
 21. [Day 21](https://github.com/MdGhulamAzadAnsari/Snake-Game)
 22. [Day 22](https://github.com/MdGhulamAzadAnsari/Pong-Game)
-23. [Day 23](https://github.com/MdGhulamAzadAnsari/Turtle-Crossing-Gam)
+23. [Day 23](https://github.com/MdGhulamAzadAnsari/Turtle-Crossing-Game)
 24. [Day 24](Day%20024%20-%20Intermediate%20-%20Files,%20Directories%20and%20Paths)
