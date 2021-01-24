@@ -23,3 +23,4 @@
 22. [Day 22](https://github.com/MdGhulamAzadAnsari/Pong-Game)
 23. [Day 23](https://github.com/MdGhulamAzadAnsari/Turtle-Crossing-Game)
 24. [Day 24](Day%20024%20-%20Intermediate%20-%20Files,%20Directories%20and%20Paths)
+25. [Day 25](Day%20025%20-%20Intermediate%20-%20Working%20with%20CSV%20Data%20and%20the%20Pandas%20Library)
