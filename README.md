@@ -25,3 +25,4 @@
 24. [Day 24](Day%20024%20-%20Intermediate%20-%20Files,%20Directories%20and%20Paths)
 25. [Day 25](Day%20025%20-%20Intermediate%20-%20Working%20with%20CSV%20Data%20and%20the%20Pandas%20Library)
 26. [Day 26](Day%20026%20-%20Intermediate%20-%20List%20Comprehension%20and%20the%20NATO%20Alphabet)
+27. [Day 27](Day%20027%20-%20Intermediate%20-%20Tkinter%2C%20args%2C%20kwargs%20and%20Creating%20GUI%20Programs)
