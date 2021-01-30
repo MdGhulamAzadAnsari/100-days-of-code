@@ -29,3 +29,4 @@
 27. [Day 27](Day%20027%20-%20Intermediate%20-%20Tkinter%2C%20args%2C%20kwargs%20and%20Creating%20GUI%20Programs)
 28. [Day 28](Day%20028%20-%20Intermediate%20-%20Tkinter%2C%20Dynamic%20Typing%20and%20the%20Pomodoro%20GUI%20Application)
 29. [Day 29](Day%20029%20-%20Intermediate%20-%20Building%20a%20Password%20Manager%20GUI%20App%20with%20Tkinter)
+30. [Day 30](Day%20030%20-%20Intermediate%20-%20Errors%2C%20Exceptions%20and%20JSON%20Data%20Improving%20the%20Password)
