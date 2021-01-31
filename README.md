@@ -31,3 +31,4 @@
 29. [Day 29](Day%20029%20-%20Intermediate%20-%20Building%20a%20Password%20Manager%20GUI%20App%20with%20Tkinter)
 30. [Day 30](Day%20030%20-%20Intermediate%20-%20Errors%2C%20Exceptions%20and%20JSON%20Data%20Improving%20the%20Password)
 31. [Day 31](Day%20031%20-%20Intermediate%20-%20Flash%20Card%20App%20Capstone%20Project)
+32. [Day 32](Day%20032%20-%20Intermediate%2B%20Send%20Email%20(smtplib)%20%26%20Manage%20Dates%20(datetime))
