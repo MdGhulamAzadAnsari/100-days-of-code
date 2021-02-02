@@ -32,3 +32,4 @@
 30. [Day 30](Day%20030%20-%20Intermediate%20-%20Errors%2C%20Exceptions%20and%20JSON%20Data%20Improving%20the%20Password)
 31. [Day 31](Day%20031%20-%20Intermediate%20-%20Flash%20Card%20App%20Capstone%20Project)
 32. [Day 32](Day%20032%20-%20Intermediate%2B%20Send%20Email%20(smtplib)%20%26%20Manage%20Dates%20(datetime))
+33. [Day 33](Day%20033%20-%20Intermediate%2B%20API%20Endpoints%20%26%20API%20Parameters%20-%20ISS%20Overhead%20Notifier)
