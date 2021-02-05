@@ -40,7 +40,8 @@ print(day_before_yesterday_closing_price)
 
 # Find the positive difference between 1 and 2. e.g. 40 - 20 = -20, but the positive difference is 20. Hint:
 # https://www.w3schools.com/python/ref_func_abs.asp
-difference = abs(float(yesterday_closing_price) - float(day_before_yesterday_closing_price))
+difference = abs(float(yesterday_closing_price) -
+                 float(day_before_yesterday_closing_price))
 up_down = None
 if difference > 0:
     up_down = "🔺"
@@ -69,7 +70,7 @@ if diff_percent > 0:  # 5
     # STEP 3: Use twilio.com/docs/sms/quickstart/python
 
     # Create a new list of the first 3 article's headline and description using list comprehension.
-    formatted_articles = [f"{STOCK_NAME}: {up_down}{diff_percent}%\nHeadline: {article['title']}. \n" 
+    formatted_articles = [f"{STOCK_NAME}: {up_down}{diff_percent}%\nHeadline: {article['title']}. \n"
                           f"Brief: {article['description']}" for article in three_articles]
 
     # Send each article as a separate message via Twilio.
