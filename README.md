@@ -35,3 +35,4 @@
 33. [Day 33](Day%20033%20-%20Intermediate%2B%20API%20Endpoints%20%26%20API%20Parameters%20-%20ISS%20Overhead%20Notifier)
 34. [Day 34](Day%20034%20-%20Intermediate%2B%20API%20Practice%20-%20Creating%20a%20GUI%20Quiz%20App)
 35. [Day 35](Day%20035%20-%20Intermediate%2B%20Keys%2C%20Authentication%20%26%20Environment%20Variables%20Send%20SMS)
+36. [Day 36](Day%20036%20-%20Intermediate%2B%20Stock%20Trading%20News%20Alert%20Project)
