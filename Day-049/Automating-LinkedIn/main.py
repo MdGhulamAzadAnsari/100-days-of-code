@@ -7,7 +7,8 @@ ACCOUNT_EMAIL = "YOUR LOGIN EMAIL"
 ACCOUNT_PASSWORD = "YOUR LOGIN PASSWORD"
 PHONE = "YOUR PHONE NUMBER"
 
-CHROME_DRIVER_PATH = "E:\Tools\chromedriver.exe"
+CHROME_DRIVER_PATH = "YOUR CHROME DRIVER PATH"
+
 driver = webdriver.Chrome(CHROME_DRIVER_PATH)
 driver.get(
     "https://www.linkedin.com/jobs/search/?f_LF=f_AL&geoId=102257491&keywords=marketing%20intern&location=London%2C"
@@ -26,7 +27,8 @@ password_field.send_keys(Keys.ENTER)
 
 time.sleep(5)
 
-all_listings = driver.find_elements_by_css_selector(".job-card-container--clickable")
+all_listings = driver.find_elements_by_css_selector(
+    ".job-card-container--clickable")
 
 for listing in all_listings:
     print("called")
@@ -35,7 +37,8 @@ for listing in all_listings:
 
     # Try to locate the apply button, if can't locate then skip the job.
     try:
-        apply_button = driver.find_element_by_css_selector(".jobs-s-apply button")
+        apply_button = driver.find_element_by_css_selector(
+            ".jobs-s-apply button")
         apply_button.click()
         time.sleep(5)
 
@@ -48,10 +51,12 @@ for listing in all_listings:
 
         # If the submit_button is a "Next" button, then this is a multi-step application, so skip.
         if submit_button.get_attribute("data-control-name") == "continue_unify":
-            close_button = driver.find_element_by_class_name("artdeco-modal__dismiss")
+            close_button = driver.find_element_by_class_name(
+                "artdeco-modal__dismiss")
             close_button.click()
             time.sleep(2)
-            discard_button = driver.find_elements_by_class_name("artdeco-modal__confirm-dialog-btn")[1]
+            discard_button = driver.find_elements_by_class_name(
+                "artdeco-modal__confirm-dialog-btn")[1]
             discard_button.click()
             print("Complex application, skipped.")
             continue
@@ -60,7 +65,8 @@ for listing in all_listings:
 
         # Once application completed, close the pop-up window.
         time.sleep(2)
-        close_button = driver.find_element_by_class_name("artdeco-modal__dismiss")
+        close_button = driver.find_element_by_class_name(
+            "artdeco-modal__dismiss")
         close_button.click()
 
     # If already applied to job or job is no longer accepting applications, then skip.
