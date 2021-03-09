@@ -9,6 +9,7 @@ flask-bootstrap = "*"
 flask-wtf = "*"
 flask-sqlalchemy = "*"
 requests = "*"
+flask-login = "*"
 
 [dev-packages]
 
