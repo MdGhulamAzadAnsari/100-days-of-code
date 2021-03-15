@@ -2,7 +2,14 @@ const projects = [
   {
     name: "Day 01",
     description: "Working with Variables in Python to Manage Data",
-    link: "../../Day-001",
+    link:
+      "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-001",
+  },
+  {
+    name: "Day 02",
+    description: "Understanding Data Types and How to Manipulate Strings",
+    link:
+      "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-002",
   },
 ];
 
