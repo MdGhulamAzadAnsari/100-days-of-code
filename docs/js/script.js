@@ -17,6 +17,18 @@ const projects = [
     link:
       "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-003",
   },
+  {
+    name: "Day 04",
+    description: "Randomisation and Python Lists",
+    link:
+      "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-004",
+  },
+  {
+    name: "Day 05",
+    description: "Python Loops",
+    link:
+      "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-005",
+  },
 ];
 
 const getCard = (name, description, link) => {
