@@ -1,4 +1,10 @@
-const projects = [];
+const projects = [
+  {
+    name: "Day 01",
+    description: "Working with Variables in Python to Manage Data",
+    link: "../../Day-001",
+  },
+];
 
 const getCard = (name, description, link) => {
   var newNode = document.createElement("div");
