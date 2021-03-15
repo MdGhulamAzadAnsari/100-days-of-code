@@ -11,6 +11,12 @@ const projects = [
     link:
       "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-002",
   },
+  {
+    name: "Day 03",
+    description: "Control Flow and Logical Operators",
+    link:
+      "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-003",
+  },
 ];
 
 const getCard = (name, description, link) => {
