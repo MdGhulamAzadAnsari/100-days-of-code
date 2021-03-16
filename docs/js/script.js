@@ -1,36 +1,3 @@
-const projects = [
-  {
-    name: "Day 01",
-    description: "Working with Variables in Python to Manage Data",
-    link:
-      "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-001",
-  },
-  {
-    name: "Day 02",
-    description: "Understanding Data Types and How to Manipulate Strings",
-    link:
-      "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-002",
-  },
-  {
-    name: "Day 03",
-    description: "Control Flow and Logical Operators",
-    link:
-      "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-003",
-  },
-  {
-    name: "Day 04",
-    description: "Randomisation and Python Lists",
-    link:
-      "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-004",
-  },
-  {
-    name: "Day 05",
-    description: "Python Loops",
-    link:
-      "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-005",
-  },
-];
-
 const getCard = (name, description, link) => {
   var newNode = document.createElement("div");
   newNode.className = "col-xl-3 col-sm-6 col-12";
@@ -46,10 +13,21 @@ const getCard = (name, description, link) => {
   return newNode;
 };
 
-const cardWrapper = document.getElementById("card-wrapper");
+const displayProjects = (projects) => {
+  const cardWrapper = document.getElementById("card-wrapper");
+  projects.forEach((project) => {
+    cardWrapper.appendChild(
+      getCard(project.name, project.description, project.link)
+    );
+  });
+};
 
-projects.forEach((project) => {
-  cardWrapper.appendChild(
-    getCard(project.name, project.description, project.link)
-  );
-});
+// Fetch data from json file
+const projectJsonFile =
+  "https://raw.githubusercontent.com/MdGhulamAzadAnsari/100-Days-of-Code/master/docs/data/projects.json";
+
+fetch(projectJsonFile)
+  .then((data) => data.json())
+  .then((data) => {
+    displayProjects(data.projects);
+  });
