@@ -31,6 +31,9 @@ h6 {
   letter-spacing: 0.05rem;
   font-size: 1.12rem;
 }
+.card .card-text {
+  min-height: 3rem;
+}
 .breadcrumb,
 .card .card-title,
 .dropdown-header {
