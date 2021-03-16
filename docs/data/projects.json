@@ -1,0 +1,29 @@
+{
+  "projects": [
+    {
+      "name": "Day 01",
+      "description": "Working with Variables in Python to Manage Data",
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-001"
+    },
+    {
+      "name": "Day 02",
+      "description": "Understanding Data Types and How to Manipulate Strings",
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-002"
+    },
+    {
+      "name": "Day 03",
+      "description": "Control Flow and Logical Operators",
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-003"
+    },
+    {
+      "name": "Day 04",
+      "description": "Randomisation and Python Lists",
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-004"
+    },
+    {
+      "name": "Day 05",
+      "description": "Python Loops",
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-005"
+    }
+  ]
+}
