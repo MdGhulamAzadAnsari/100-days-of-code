@@ -34,6 +34,11 @@
       "name": "Day 07",
       "description": "Hangman",
       "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-007"
+    },
+    {
+      "name": "Day 08",
+      "description": "Function Parameters & Caesar Cipher",
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-008"
     }
   ]
 }
