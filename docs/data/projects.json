@@ -24,6 +24,16 @@
       "name": "Day 05",
       "description": "Python Loops",
       "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-005"
+    },
+    {
+      "name": "Day 06",
+      "description": "Python Functions & Karel",
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-006"
+    },
+    {
+      "name": "Day 07",
+      "description": "Hangman",
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-007"
     }
   ]
 }
