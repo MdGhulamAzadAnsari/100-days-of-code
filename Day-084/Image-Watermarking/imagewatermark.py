@@ -23,14 +23,12 @@ class ImageWatermark(Tk):
         self.font_family = "arial"
         self.font_size = 10
         self.font_color = (255, 255, 255)
-
-        # Store multiple image file path
+        self.select_font_color = ((0, 0, 0), '#000000')
         self.image_paths = []
-        self.watermark_text = ""
         self.destination_path = "/"
         self.canvas = Canvas(width=800, height=600, highlightthickness=0)
         self.logo_img = PhotoImage(file="logo.png")
-        self.canvas.grid(row=9, column=0, columnspan=3)
+        self.canvas.grid(row=8, column=0, columnspan=3)
         self.image_on_canvas = self.canvas.create_image(
             400, 300, image=self.logo_img)
 
@@ -118,47 +116,54 @@ class ImageWatermark(Tk):
         self.select_font_color = colorchooser.askcolor(title="Choose Color")
 
     def save_watermark(self):
-        self.watermark_text = self.add_text_input.get()
-        self.font_size = self.select_font_size_slider.get()
-        self.font_color = self.select_font_color[1]
-        self.watermark_position = self.position_options.get()
+        try:
+            watermark_text = self.add_text_input.get()
+            self.font_size = self.select_font_size_slider.get()
+            self.font_color = self.select_font_color[1]
+            position = self.position_options.get()
 
-        # ADD WATERMARK TO THE IMAGE AND SAVE IMAGE
-        if len(self.image_paths) > 0:
-            for image in self.image_paths:
-                with Image.open(image) as img:
-                    image_draw = ImageDraw.Draw(img)
-                    font = ImageFont.truetype(self.font_family, self.font_size)
+            # ADD WATERMARK TO THE IMAGE AND SAVE IMAGE
+            if len(self.image_paths) > 0:
+                for image in self.image_paths:
+                    with Image.open(image) as img:
+                        image_draw = ImageDraw.Draw(img)
+                        font = ImageFont.truetype(
+                            self.font_family, self.font_size)
+                        # GET WATERMARK POSITION
+                        watermark_position = self.get_watermark_position(
+                            position, img, image_draw, watermark_text, font)
+                        # WRITE TEXT ON IMAGE
+                        image_draw.text(
+                            watermark_position, watermark_text, self.font_color, font=font)
 
-                    # SET POSITION OF THE WATERMARK TEXT
-                    text_width, text_height = image_draw.textsize(
-                        self.watermark_text, font)
-                    margin = 25
+                        # SAVE FILE AS A COPY OF THE ORIGINAL FILE
+                        image_name = image.split("/")[-1]
+                        img.save(f"{self.destination_path}/copy-{image_name}")
+                messagebox.showinfo(
+                    title="Image Watermark", message="Image saved.")
+            else:
+                messagebox.showerror(
+                    title="Error", message="Please upload images.")
+        except Exception:
+            messagebox.showerror(
+                title="Error", message="Something happen.\nPlease try again")
 
-                    if self.watermark_position == "Top-Left":
-                        self.watermark_position = (margin, margin)
-                    elif self.watermark_position == "Top-Right":
-                        self.watermark_position = (
-                            img.size[0] - (text_width + margin), margin)
-                    elif self.watermark_position == "Center":
-                        self.watermark_position = (
-                            img.size[0] / 2 - text_width / 2, img.size[1] / 2 - text_height / 2)
-                    elif self.watermark_position == "Bottom-Left":
-                        self.watermark_position = (
-                            25, img.size[1] - (25 + self.font_size))
-                    else:
-                        self.watermark_position = (
-                            img.size[0] - (text_width + margin), img.size[1] - (text_height + margin))
-                        print(self.watermark_position)
-
-                    image_draw.text(
-                        self.watermark_position, self.watermark_text, self.font_color, font=font)
-
-                    # SAVE FILE AS A COPY OF THE ORIGINAL FILE
-                    image_name = image.split("/")[-1]
-                    img.save(f"{self.destination_path}/copy-{image_name}")
-            messagebox.showinfo(
-                title="Image Watermark", message="Image saved.")
+    def get_watermark_position(self, position, img, image_draw, watermark_text, font):
+        # SET POSITION OF THE WATERMARK TEXT
+        text_width, text_height = image_draw.textsize(
+            watermark_text, font)
+        margin = 25
+        if position == "Top-Left":
+            return (margin, margin)
+        elif position == "Top-Right":
+            return (
+                img.size[0] - (text_width + margin), margin)
+        elif position == "Center":
+            return (
+                img.size[0] / 2 - text_width / 2, img.size[1] / 2 - text_height / 2)
+        elif position == "Bottom-Left":
+            return (
+                25, img.size[1] - (25 + self.font_size))
         else:
-            messagebox.showinfo(
-                title="Error", message="Please upload images.")
+            return (
+                img.size[0] - (text_width + margin), img.size[1] - (text_height + margin))
