@@ -78,8 +78,9 @@ def start_test():
 
 
 # ---------------------------- START WINDOW UI ------------------------------- #
-start_window = TypingSpeedTest()
-start_test_btn = Button(start_window, text="Start Typing Test",
-                        fg=YELLOW, bg=RED, font=(FONT_NAME, 16, "normal"), command=start_test)
-start_test_btn.grid(row=2, column=0, padx=10, pady=100)
-start_window.mainloop()
+if __name__ == "__main__":
+    start_window = TypingSpeedTest()
+    start_test_btn = Button(start_window, text="Start Typing Test",
+                            fg=YELLOW, bg=RED, font=(FONT_NAME, 16, "normal"), command=start_test)
+    start_test_btn.grid(row=2, column=0, padx=10, pady=100)
+    start_window.mainloop()
