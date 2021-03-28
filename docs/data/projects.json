@@ -3,87 +3,87 @@
     {
       "name": "Day 01",
       "description": "Working with Variables in Python to Manage Data",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-001"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-001"
     },
     {
       "name": "Day 02",
       "description": "Understanding Data Types and How to Manipulate Strings",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-002"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-002"
     },
     {
       "name": "Day 03",
       "description": "Control Flow and Logical Operators",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-003"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-003"
     },
     {
       "name": "Day 04",
       "description": "Randomisation and Python Lists",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-004"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-004"
     },
     {
       "name": "Day 05",
       "description": "Python Loops",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-005"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-005"
     },
     {
       "name": "Day 06",
       "description": "Python Functions & Karel",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-006"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-006"
     },
     {
       "name": "Day 07",
       "description": "Hangman",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-007"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-007"
     },
     {
       "name": "Day 08",
       "description": "Function Parameters & Caesar Cipher",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-008"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-008"
     },
     {
       "name": "Day 09",
       "description": "Dictionaries, Nesting and the Secret Auction",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-009"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-009"
     },
     {
       "name": "Day 10",
       "description": "Functions with Outputs",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-010"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-010"
     },
     {
       "name": "Day 11",
       "description": "The Blackjack Capstone Project",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-011"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-011"
     },
     {
       "name": "Day 12",
       "description": "Scope & Number Guessing Game",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-012"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-012"
     },
     {
       "name": "Day 13",
       "description": "Debugging How to Find and Fix Errors in your Code",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-013"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-013"
     },
     {
       "name": "Day 14",
       "description": "Higher Lower Game Project",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-014"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-014"
     },
     {
       "name": "Day 15",
       "description": "Local Development Environment Setup & the Coffee Machine",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-015"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-015"
     },
     {
       "name": "Day 16",
       "description": "Object Oriented Programming (OOP)",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-016"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-016"
     },
     {
       "name": "Day 17",
       "description": "The Quiz Project & the Benefits of OOP",
-      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Day-017"
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-017"
     }
   ]
 }
