@@ -1,5 +1,4 @@
 from tkinter import *
-import time
 
 
 destroy_timer = None
