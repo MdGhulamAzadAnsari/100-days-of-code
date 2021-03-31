@@ -11,8 +11,13 @@ flask-sqlalchemy = "*"
 requests = "*"
 flask-login = "*"
 pillow = "*"
+gtts = "*"
+pypdf2 = "*"
+pdfplumber = "*"
+django = "*"
 
 [dev-packages]
+autopep8 = "*"
 
 [requires]
 python_version = "3.9"
