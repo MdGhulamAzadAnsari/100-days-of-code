@@ -15,6 +15,8 @@ gtts = "*"
 pypdf2 = "*"
 pdfplumber = "*"
 django = "*"
+pyautogui = "*"
+keyboard = "*"
 
 [dev-packages]
 autopep8 = "*"
