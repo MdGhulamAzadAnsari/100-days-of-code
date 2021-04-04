@@ -17,6 +17,7 @@ pdfplumber = "*"
 django = "*"
 pyautogui = "*"
 keyboard = "*"
+pygame = "*"
 
 [dev-packages]
 autopep8 = "*"
