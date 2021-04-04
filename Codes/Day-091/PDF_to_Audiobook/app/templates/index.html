@@ -12,15 +12,15 @@
 
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="{% static 'css/main.css'%}">
-    <title>Hello, world!</title>
+    <title>PDF To Audiobook</title>
 </head>
 
 <body>
     <div class="container">
-        <h1>Hello, world!</h1>
+        <h1>PDF To Audiobook</h1>
         <div class="row">
             <div class="col-6">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">
                         <div class="input-group">
@@ -28,7 +28,7 @@
                             <label class="input-group-btn my-0">
                                 <span class="btn btn-large btn-outline-primary rounded-0" id="browse">
                                     Browse&hellip;
-                                    <input id="pdf-input" name="pdf-file" type="file" accept=".pdf">
+                                    <input id="pdf-input" name="pdf" type="file" accept=".pdf">
                                 </span>
                             </label>
                         </div>
@@ -44,6 +44,11 @@
                     </div>
                 </form>
             </div>
+            <h1>{{status}}</h1>
+            {% if status %}
+            <h1>Download</h1>
+            <a href="{% static audio_file %}">{{audio_file}}</a>
+            {% endif %}
         </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
