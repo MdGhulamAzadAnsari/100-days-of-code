@@ -32,10 +32,12 @@ class MusicPlayer:
 
         # Create Player Control buttons
         prev_btn = Button(controls_frame, image=prev_img, borderwidth=0)
-        next_btn = Button(controls_frame, image=next_img, borderwidth=0)
+        next_btn = Button(controls_frame, image=next_img,
+                          borderwidth=0, command=self.next_song)
         play_btn = Button(controls_frame, image=play_img,
                           borderwidth=0, command=self.play)
-        pause_btn = Button(controls_frame, image=pause_img, borderwidth=0)
+        pause_btn = Button(controls_frame, image=pause_img,
+                           borderwidth=0, command=self.pause)
         stop_btn = Button(controls_frame, image=stop_img,
                           borderwidth=0, command=self.stop)
 
@@ -52,9 +54,13 @@ class MusicPlayer:
 
         # Add Song Menu
         add_song_menu = Menu(menu)
-        menu.add_cascade(label="Add Songs", menu=add_song_menu)
+        menu.add_cascade(label="Add Song", menu=add_song_menu)
         add_song_menu.add_command(
             label="Add one song to playlist", command=self.add_song)
+
+        # Add Manu Song Menu
+        add_song_menu.add_command(
+            label="Add many song to playlist", command=self.add_many_song)
 
         self.window.mainloop()
 
@@ -63,15 +69,17 @@ class MusicPlayer:
             initialdir='', title="Choose a song", filetypes=(("Mp3 Files", "*.mp3"),))
         self.playlist.insert(END, song)
 
+    def add_many_song(self):
+        songs = fd.askopenfilenames(
+            initialdir='', title="Choose songs", filetypes=(("Mp3 Files", "*.mp3"),))
+        for song in songs:
+            self.playlist.insert(END, song)
+
     def play(self):
         song = self.playlist.get(ACTIVE)
         mixer.music.load(song)
         mixer.music.play(loops=0)
         self.is_pause = False
-
-    def stop(self):
-        mixer.music.stop()
-        self.playlist.selection_clear()
 
     def pause(self):
         if self.is_pause:
@@ -80,3 +88,10 @@ class MusicPlayer:
         else:
             mixer.music.pause()
             self.is_pause = True
+
+    def stop(self):
+        mixer.music.stop()
+        self.playlist.selection_clear(FIRST, LAST)
+
+    def next_song(self):
+        next_one = self.playlist.curselection()
