@@ -84,6 +84,21 @@
       "name": "Day 17",
       "description": "The Quiz Project & the Benefits of OOP",
       "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-017"
+    },
+    {
+      "name": "Day 18",
+      "description": "Turtle & the Graphical User Interface (GUI)",
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-018"
+    },
+    {
+      "name": "Day 19",
+      "description": "Instances, State and Higher Order Functions",
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-019"
+    },
+    {
+      "name": "Day 20",
+      "description": "Build the Snake Game Part 1: Animation & Coordinates",
+      "link": "https://github.com/MdGhulamAzadAnsari/100-Days-of-Code/tree/master/Codes/Day-020"
     }
   ]
 }
