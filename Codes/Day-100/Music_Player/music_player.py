@@ -19,6 +19,8 @@ mixer.init()
 class MusicPlayer:
     def __init__(self):
         # Variables
+        self.songs = {}
+        self.play_thread = None
         self.is_playing = False
         self.is_paused = False
         self.is_mute = False
@@ -31,8 +33,7 @@ class MusicPlayer:
         self.window = Tk()
         self.window.geometry('800x520')
         self.window.resizable(0, 0)
-        self.window.title('DeePlayer')
-        # self.window.wm_attributes('-alpha', 0.95)
+        self.window.title('Music Player')
         self.window.iconbitmap('icon.ico')
 
         # Menu bar - all the menu_cascades and menu_commands.
@@ -42,7 +43,7 @@ class MusicPlayer:
         file = Menu(main_menu, tearoff=0)
         main_menu.add_cascade(label='Media', menu=file)
 
-        file.add_command(label='Open', )  # command=self.open_file)
+        file.add_command(label='Open', command=self.open_file)
         file.add_command(label='Open Folder', )  # command=self.set_playlist)
         file.add_command(label='Open Muliple Files', )
         file.add_separator()
@@ -218,7 +219,16 @@ class MusicPlayer:
         self.window.protocol("WM_DELETE_self.windowDOW", self.exit)
         self.window.mainloop()
 
-    def playSongInitial(self):
+    def open_file(self):
+        dir_ = filedialog.askopenfilename(
+            initialdir='', title='Select File')
+        if dir_:
+            filename = os.path.basename(dir_)
+            self.songs[filename] = dir_
+            self.playlist.insert(END, filename)
+            self.playing = False
+
+    def playSongInitial(self, *args):
         self.stop()
         self.play_music()
 
@@ -237,17 +247,20 @@ class MusicPlayer:
                     self.status_bar['text'] = 'Music Paused'
             else:
                 self.file = self.playlist.get(ACTIVE)
-                self.cur_playing = file
-                mixer.music.load(file)
+                self.cur_playing = self.file
+                mixer.music.load(self.songs[self.file])
                 mixer.music.play()
                 self.status_bar['text'] = 'Playing - ' + self.file
                 self.play_btn['image'] = self.pause_img
                 self.is_playing = True
-                self.show_details(file)
-        except:
-            mb.showerror('error', 'No file found to play.')
+                self.show_details(self.songs[self.file])
+        except Exception as e:
+            mb.showerror('error', f'No file found to play.\n{e}')
 
     def show_details(self, play_song):
+        print(self.songs)
+        print(play_song)
+
         file_data = os.path.splitext(play_song)
 
         if file_data[1] == '.mp3':
@@ -277,7 +290,7 @@ class MusicPlayer:
 
     def start_count(self, t):
         # mixer.music.get_busy(): - Returns FALSE when we press the stop button (music stop playing)
-        while self.urrent_time <= t and mixer.music.get_busy():
+        while self.current_time <= t and mixer.music.get_busy():
             if self.is_paused:
                 continue
             elif self.to_break:
@@ -286,8 +299,7 @@ class MusicPlayer:
                 mins, secs = divmod(self.current_time, 60)
                 mins = round(mins)
                 secs = round(secs)
-                timeformat = '{:02d}:{:02d}'.format(mins, secs)
-                self.dur_start['text'] = timeformat
+                self.dur_start['text'] = f'{mins:02d}:{secs:02d}'
                 time.sleep(1)
                 self.current_time += 1
                 self.progress_bar['value'] = self.current_time
@@ -307,28 +319,19 @@ class MusicPlayer:
         image = image.resize((350, 350), Image.ANTIALIAS)
         return ImageTk.PhotoImage(image)
 
-    def con_func(self, con):
-        self.current_time = 0
-        if con == 'rand':
-            try:
-                in_ = random.randint(0, len(self.songs))
-                next_play = self.songs[in_]
-                self.play_next(next_play)
-            except:
-                self.play_music()
-        elif con == 'rep_all':
-            try:
-                in_ = self.songs.index(cur_playing)
-                next_play = self.songs[in_+1]
-                self.play_next(next_play)
-            except:
-                self.play_music()
-        else:
-            self.play_next(cur_playing)
+    def next(self, song):
+        self.file = song
+        self.cur_playing = file
+        mixer.music.load(file)
+        mixer.music.play()
+        self.status_bar['text'] = 'Playing - '+file
+        self.play_btn['image'] = pause_img
+        self.playing = True
+        self.show_details(file)
 
     def stop(self):
         mixer.music.stop()
-        to_break = True
+        self.to_break = True
         self.current_time = 0
         self.cur_playing = ''
         self.is_playing = False
