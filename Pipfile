@@ -18,6 +18,8 @@ django = "*"
 pyautogui = "*"
 keyboard = "*"
 pygame = "*"
+mutagen = "*"
+ttkthemes = "*"
 
 [dev-packages]
 autopep8 = "*"

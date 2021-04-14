@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "618b9dff59f90907377727f25a63ef088ef10f6a9b291c8c026109d56b01b271"
+            "sha256": "7aa2b661497a91d0064a66118e1d82d8f13a748c8132bb25db15853d8408de52"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -254,6 +254,14 @@
                 "sha256:2c62fb8885062b8e520a3cce0a297c657adcc08c60952eb05bc8256ef6f7f6e7"
             ],
             "version": "==0.1.3"
+        },
+        "mutagen": {
+            "hashes": [
+                "sha256:6397602efb3c2d7baebd2166ed85731ae1c1d475abca22090b7141ff5034b3e1",
+                "sha256:9c9f243fcec7f410f138cb12c21c84c64fde4195481a30c9bfb05b5f003adfed"
+            ],
+            "index": "pypi",
+            "version": "==1.45.1"
         },
         "pdfminer.six": {
             "hashes": [
@@ -519,6 +527,13 @@
             ],
             "markers": "python_version >= '3.5'",
             "version": "==0.4.1"
+        },
+        "ttkthemes": {
+            "hashes": [
+                "sha256:01daed001f2ff0e4f32832a0d9ea48176c0c505203b030756bdde3bd1bcb21d2"
+            ],
+            "index": "pypi",
+            "version": "==3.2.2"
         },
         "urllib3": {
             "hashes": [
