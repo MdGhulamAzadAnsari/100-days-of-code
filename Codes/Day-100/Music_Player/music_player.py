@@ -20,6 +20,11 @@ mixer.init()
 
 class MusicPlayer:
     def __init__(self):
+        # Variables
+        self.songs = []
+        self.is_playing = False
+        self.is_pause = False
+
         # create main window
         self.window = Tk()
         self.window.geometry('600x400')
@@ -55,6 +60,7 @@ class MusicPlayer:
         # Left side control button
         self.play_btn = self.__create_button(
             control_frame, image=self.play_img, padx=(10, 20))
+        self.play_btn.bind('<Button-1>', self.play)
 
         prev_btn = self.__create_button(control_frame, image=prev_img)
         stop_btn = self.__create_button(control_frame, image=stop_img)
@@ -119,7 +125,39 @@ class MusicPlayer:
         return PhotoImage(file=os.path.join("icons", img_name))
 
     def open_file(self):
-        pass
+        file = filedialog.askopenfilename(
+            initialdir='', title='Select File')
+        filename = os.path.basename(file)
+        self.songs.append(file)
+        # self.playlist.insert(END, filename)
+        self.is_playing = False
+        # Play the song
+        self.play()
+
+    def play(self, *args):
+        try:
+            if self.is_playing:
+                if self.is_pause:
+                    mixer.music.unpause()
+                    self.is_pause = False
+                    # status_bar['text'] = 'Playing - '+file
+                    self.play_btn['image'] = self.pause_img
+                else:
+                    mixer.music.pause()
+                    self.is_pause = True
+                    self.play_btn['image'] = self.play_img
+                    # status_bar['text'] = 'Music Paused'
+            else:
+                song = self.songs[len(self.songs)-1]
+                mixer.music.load(song)
+                mixer.music.play()
+                # status_bar['text'] = 'Playing - '+file
+                self.play_btn['image'] = self.pause_img
+                self.is_playing = True
+                # self.show_details(file)
+
+        except Exception as e:
+            mb.showerror('error', f'No file found to play.\n{e}')
 
     def exit(self):
         pass
