@@ -12,6 +12,7 @@ import time
 import random
 import _thread
 import os
+import icons
 
 
 mixer.init()
@@ -32,15 +33,52 @@ class MusicPlayer:
         # Album Art Part
         self.__create_art()
 
-        # create controls button
-        self.__create_controllers()
+        # create icon image
+        self.play_img = self.__get_image(icons.PLAY)
+        self.pause_img = self.__get_image(icons.PAUSE)
+        self.mute_img = self.__get_image(icons.MUTE)
+        self.speaker_img = self.__get_image(icons.SPEAKER)
+        prev_img = self.__get_image(icons.PREV)
+        stop_img = self.__get_image(icons.STOP)
+        next_img = self.__get_image(icons.NEXT)
+        shuffle_img = self.__get_image(icons.SHUFFLE)
+        repeat_img = self.__get_image(icons.REPEAT)
+        rep_one_img = self.__get_image(icons.REPEAT_ONE)
+
+        # Create control frame
+        control_frame = LabelFrame(
+            self.window, bd=0, padx=5, pady=5)
+
+        control_frame.grid(row=1, column=0, sticky=E+W+N+S)
+
+        # Create Buttons
+        # Left side control button
+        self.play_btn = self.create_button(
+            control_frame, image=self.play_img, padx=(10, 20))
+
+        prev_btn = self.create_button(control_frame, image=prev_img)
+        stop_btn = self.create_button(control_frame, image=stop_img)
+        next_btn = self.create_button(control_frame, image=next_img)
+
+        # Right side control button
+        self.scale = ttk.Scale(control_frame, from_=0, to=100,
+                               orient=HORIZONTAL)
+        self.scale.set(70)
+        mixer.music.set_volume(0.7)
+        self.scale.pack(side=RIGHT, fill=X, padx=10)
+
+        self.speaker = self.create_button(
+            control_frame, image=self.speaker_img, side=RIGHT)
 
         self.window.mainloop()
 
+    def create_button(self, root, image, side=LEFT, fill=X, padx=0):
+        btn = Button(root, image=image, bd=0)
+        btn.pack(side=side, fill=fill, padx=padx)
+        return btn
+
     def __create_menu(self):
-        """
-            create menu bar and menu
-        """
+        # create menu bar and menu
         main_menu = Menu(self.window, tearoff=0)
         self.window.configure(menu=main_menu)
 
@@ -77,15 +115,8 @@ class MusicPlayer:
         self.playlist.place(x=0, y=0)
         # self.playlist.bind('<Double-Button>', self.playSongInitial)
 
-    def __create_controllers(self):
-        control_frame = LabelFrame(
-            self.window, width=400, height=50, padx=5, pady=5)
-        control_frame.grid(row=1, column=0)
-
-        self.play_img = PhotoImage(file='icons/play.png')
-        self.play_btn = Button(control_frame, image=self.play_img, bd=0,
-                               )  # command=self.play_music)
-        self.play_btn.grid(row=0, column=0)
+    def __get_image(self, img_name):
+        return PhotoImage(file=os.path.join("icons", img_name))
 
     def open_file(self):
         pass
