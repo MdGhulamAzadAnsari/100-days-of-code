@@ -53,12 +53,12 @@ class MusicPlayer:
 
         # Create Buttons
         # Left side control button
-        self.play_btn = self.create_button(
+        self.play_btn = self.__create_button(
             control_frame, image=self.play_img, padx=(10, 20))
 
-        prev_btn = self.create_button(control_frame, image=prev_img)
-        stop_btn = self.create_button(control_frame, image=stop_img)
-        next_btn = self.create_button(control_frame, image=next_img)
+        prev_btn = self.__create_button(control_frame, image=prev_img)
+        stop_btn = self.__create_button(control_frame, image=stop_img)
+        next_btn = self.__create_button(control_frame, image=next_img)
 
         # Right side control button
         self.scale = ttk.Scale(control_frame, from_=0, to=100,
@@ -67,12 +67,12 @@ class MusicPlayer:
         mixer.music.set_volume(0.7)
         self.scale.pack(side=RIGHT, fill=X, padx=10)
 
-        self.speaker = self.create_button(
+        self.speaker = self.__create_button(
             control_frame, image=self.speaker_img, side=RIGHT)
 
         self.window.mainloop()
 
-    def create_button(self, root, image, side=LEFT, fill=X, padx=0):
+    def __create_button(self, root, image, side=LEFT, fill=X, padx=0):
         btn = Button(root, image=image, bd=0)
         btn.pack(side=side, fill=fill, padx=padx)
         return btn
