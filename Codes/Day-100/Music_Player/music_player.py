@@ -31,7 +31,7 @@ class MusicPlayer:
         self.is_pause = False
         self.play_thread = None
         self.current_time = 0
-        self.play_style = self.REPEAT_ALL_SONG
+        self.play_style = self.REPEAT_ONE_SONG
 
         # create main window
         self.window = Tk()
@@ -238,26 +238,39 @@ class MusicPlayer:
             self.progress_bar['value'] = self.current_time
             self.progress_bar.update()
 
+        self.is_playing = False
         if self.is_pause:
             return
+        elif len(self.songs) == 1 and not self.play_style == self.REPEAT_ONE_SONG:
+            self.stop()
         else:
             try:
                 self.next_song(self.play_style)
             except:
                 pass
 
+    def stop(self):
+        pass
+
     def next_song(self, play_style):
+        print(play_style)
         self.current_time = 0
         try:
             if play_style == self.RANDOM_SONG:
+                print("random")
                 random_index = -1
                 while self.current_song_index == random_index or random_index != -1:
                     random_index = random.randint(0, len(self.songs))
                 self.current_song_index = random_index
             elif play_style == self.REPEAT_ALL_SONG:
+                print("all song")
                 self.current_song_index += 1
+
+            print("cur index ", end=" ")
+            print(self.current_time)
             self.play_next(self.songs[self.current_song_index])
         except:
+            print("except")
             self.play()
 
     def play_next(self, song):
