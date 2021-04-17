@@ -31,7 +31,7 @@ class MusicPlayer:
         self.is_pause = False
         self.play_thread = None
         self.current_time = 0
-        self.play_style = self.REPEAT_ONE_SONG
+        self.play_style = self.REPEAT_ALL_SONG
 
         # create main window
         self.window = Tk()
@@ -95,7 +95,7 @@ class MusicPlayer:
         prev_btn = self.__create_button(control_frame, image=prev_img)
         stop_btn = self.__create_button(control_frame, image=stop_img)
         next_btn = self.__create_button(control_frame, image=next_img)
-
+        stop_btn.bind('<Button-1>', self.stop)
         # Right side control button
         self.scale = ttk.Scale(control_frame, from_=0, to=100,
                                orient=HORIZONTAL)
@@ -106,6 +106,7 @@ class MusicPlayer:
         self.speaker = self.__create_button(
             control_frame, image=self.speaker_img, side=RIGHT)
 
+        self.window.protocol("WM_DELETE_WINDOW", self.exit)
         self.window.mainloop()
 
     def __create_button(self, root, image, side=LEFT, fill=X, padx=0):
@@ -249,28 +250,19 @@ class MusicPlayer:
             except:
                 pass
 
-    def stop(self):
-        pass
-
     def next_song(self, play_style):
-        print(play_style)
         self.current_time = 0
         try:
             if play_style == self.RANDOM_SONG:
-                print("random")
                 random_index = -1
                 while self.current_song_index == random_index or random_index != -1:
                     random_index = random.randint(0, len(self.songs))
                 self.current_song_index = random_index
             elif play_style == self.REPEAT_ALL_SONG:
-                print("all song")
                 self.current_song_index += 1
 
-            print("cur index ", end=" ")
-            print(self.current_time)
             self.play_next(self.songs[self.current_song_index])
         except:
-            print("except")
             self.play()
 
     def play_next(self, song):
@@ -280,10 +272,26 @@ class MusicPlayer:
         self.is_playing = True
         self.show_details(song)
 
+    def stop(self, *args):
+        mixer.music.stop()
+        self.current_time = 0
+        self.is_pause = True
+        self.is_playing = False
+        self.current_song_index = -1
+        self.dur_start['text'] = '--:--'
+        self.dur_end['text'] = '--:--'
+        self.progress_bar['value'] = 0.0
+        self.progress_bar.update()
+        self.album_art_label.configure(image=None)
+        self.album_art_label.image = None
+        self.play_btn['image'] = self.play_img
+
     def makeAlbumArtImage(self, image_path):
         image = Image.open(image_path)
         image = image.resize((350, 350), Image.ANTIALIAS)
         return ImageTk.PhotoImage(image)
 
     def exit(self):
-        pass
+        self.stop()
+        self.window.destroy()
+        os.sys.exit()
