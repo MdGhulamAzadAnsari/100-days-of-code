@@ -7,7 +7,6 @@ from tkinter import ttk
 from ttkthemes import themed_tk as tk
 from mutagen.mp3 import MP3
 from mutagen.id3 import ID3
-import threading
 import time
 import random
 import threading
@@ -16,6 +15,37 @@ import icons
 
 
 mixer.init()
+
+
+class SongTimer(threading.Thread):
+    def __init__(self, music_player, total_time):
+        super().__init__()
+        self.music_player = music_player
+        self.total_time = total_time
+        self.is_stop = False
+
+    def run(self):
+        while self.music_player.current_time <= self.total_time and mixer.music.get_busy():
+            if self.is_stop:
+                return
+            mins, secs = divmod(self.music_player.current_time, 60)
+            mins = round(mins)
+            secs = round(secs)
+            self.music_player.dur_start['text'] = f'{mins:02d}:{secs:02d}'
+            time.sleep(1)
+            self.music_player.current_time += 1
+            self.music_player.progress_bar['value'] = self.music_player.current_time
+            self.music_player.progress_bar.update()
+
+        if self.music_player.is_pause:
+            return
+        elif len(self.music_player.songs) == 1 and not self.music_player.play_style == self.music_player.REPEAT_ONE_SONG:
+            self.music_player.stop()
+        else:
+            try:
+                self.music_player.next_song(self.music_player.play_style)
+            except:
+                pass
 
 
 class MusicPlayer:
@@ -93,9 +123,13 @@ class MusicPlayer:
         self.play_btn.bind('<Button-1>', self.play)
 
         prev_btn = self.__create_button(control_frame, image=prev_img)
+        prev_btn.bind('<Button-1>', self.prev)
+
         stop_btn = self.__create_button(control_frame, image=stop_img)
-        next_btn = self.__create_button(control_frame, image=next_img)
         stop_btn.bind('<Button-1>', self.stop)
+
+        next_btn = self.__create_button(control_frame, image=next_img)
+        next_btn.bind('<Button-1>', self.next)
         # Right side control button
         self.scale = ttk.Scale(control_frame, from_=0, to=100,
                                orient=HORIZONTAL)
@@ -169,7 +203,6 @@ class MusicPlayer:
     def play(self, *args):
         if len(self.songs) <= 0:
             return
-
         try:
             if self.is_playing:
                 self.puase()
@@ -189,9 +222,7 @@ class MusicPlayer:
         if self.is_pause:
             mixer.music.unpause()
             total_length = self.progress_bar['maximum']
-            self.play_thread = threading.Thread(
-                target=self.song_timer, args=(total_length,))
-            self.play_thread.start()
+            self.start_new_thread(total_length)
             self.is_pause = False
             self.play_btn['image'] = self.pause_img
         else:
@@ -222,33 +253,12 @@ class MusicPlayer:
         mins = round(mins)
         secs = round(secs)
         self.dur_end['text'] = f'{mins:02d}:{secs:02d}'
-        self.play_thread = threading.Thread(
-            target=self.song_timer, args=(total_length,))
+        self.start_new_thread(total_length)
+
+    def start_new_thread(self, total_length):
+        self.play_thread = SongTimer(self, total_length)
+        self.play_thread.setDaemon(True)
         self.play_thread.start()
-
-    def song_timer(self, t):
-        # mixer.music.get_busy(): - Returns FALSE when we press the stop button (music stop playing)
-        # Continue - Ignores all of the statements below it. We check if music is paused or not.
-        while self.current_time <= t and mixer.music.get_busy():
-            mins, secs = divmod(self.current_time, 60)
-            mins = round(mins)
-            secs = round(secs)
-            self.dur_start['text'] = f'{mins:02d}:{secs:02d}'
-            time.sleep(1)
-            self.current_time += 1
-            self.progress_bar['value'] = self.current_time
-            self.progress_bar.update()
-
-        self.is_playing = False
-        if self.is_pause:
-            return
-        elif len(self.songs) == 1 and not self.play_style == self.REPEAT_ONE_SONG:
-            self.stop()
-        else:
-            try:
-                self.next_song(self.play_style)
-            except:
-                pass
 
     def next_song(self, play_style):
         self.current_time = 0
@@ -272,8 +282,26 @@ class MusicPlayer:
         self.is_playing = True
         self.show_details(song)
 
+    def prev(self, *args):
+        self.stop()
+        self.current_song_index -= 1
+        if self.current_song_index < 0:
+            self.current_song_index = len(self.songs) - 1
+
+        self.play_next(self.songs[self.current_song_index])
+
+    def next(self, *args):
+        self.stop()
+        self.current_song_index += 1
+        if self.current_song_index >= len(self.songs):
+            self.current_song_index = 0
+
+        self.play_next(self.songs[self.current_song_index])
+
     def stop(self, *args):
         mixer.music.stop()
+        if self.play_thread:
+            self.play_thread.is_stop = True
         self.current_time = 0
         self.is_pause = True
         self.is_playing = False
