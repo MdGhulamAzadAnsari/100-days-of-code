@@ -159,7 +159,7 @@ class MusicPlayer:
 
         file_menu.add_command(label='Open',  command=self.open_file)
         # command=self.set_playlist)
-        file_menu.add_command(label='Open Folder', )
+        file_menu.add_command(label='Open Folder', command=self.open_folder)
         file_menu.add_command(label='Open Muliple Files', )
         file_menu.add_separator()
         file_menu.add_command(label='Exit',  command=self.exit)
@@ -201,6 +201,17 @@ class MusicPlayer:
         # Play the song
         self.play()
 
+    def open_folder(self):
+        music_ex = ['mp3', 'wav', 'mpeg', 'm4a', 'wma', 'ogg']
+        selected_dir = filedialog.askdirectory(
+            initialdir='', title='Select Directory')
+        for file in os.listdir(selected_dir):
+            if file.split('.')[-1] in music_ex:
+                self.songs.append(os.path.join(selected_dir, file))
+
+        # Play the song
+        self.play()
+
     def play(self, *args):
         if len(self.songs) <= 0:
             return
@@ -234,21 +245,23 @@ class MusicPlayer:
     def show_details(self, play_song):
         file_data = os.path.splitext(play_song)
 
-        if file_data[1] == '.mp3':
-            audio = MP3(play_song)
-            total_length = audio.info.length
+        try:
+            if file_data[1] == '.mp3':
+                audio = MP3(play_song)
+                total_length = audio.info.length
 
-            with open('temp.jpg', 'wb') as img:
-                a = ID3(play_song)
-                img.write(a.getall('APIC')[0].data)
-                image = self.makeAlbumArtImage('temp.jpg')
-                self.album_art_label.configure(image=image)
-                self.album_art_label.image = image
-
-        else:
-            a = mixer.Sound(play_song)
-            total_length = a.get_length()
-
+                with open('temp.jpg', 'wb') as img:
+                    a = ID3(play_song)
+                    img.write(a.getall('APIC')[0].data)
+                    image = self.makeAlbumArtImage('temp.jpg')
+                    self.album_art_label.configure(image=image)
+                    self.album_art_label.image = image
+            else:
+                a = mixer.Sound(play_song)
+                total_length = a.get_length()
+        except:
+            self.album_art_label.configure(image=None)
+            self.album_art_label.image = None
         self.progress_bar['maximum'] = total_length
         mins, secs = divmod(total_length, 60)
         mins = round(mins)
@@ -306,7 +319,6 @@ class MusicPlayer:
         self.current_time = 0
         self.is_pause = True
         self.is_playing = False
-        self.current_song_index = -1
         self.dur_start['text'] = '--:--'
         self.dur_end['text'] = '--:--'
         self.progress_bar['value'] = 0.0
