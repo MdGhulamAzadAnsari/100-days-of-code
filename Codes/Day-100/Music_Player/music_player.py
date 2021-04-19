@@ -107,9 +107,9 @@ class MusicPlayer:
         prev_img = self.__get_image(icons.PREV)
         stop_img = self.__get_image(icons.STOP)
         next_img = self.__get_image(icons.NEXT)
-        shuffle_img = self.__get_image(icons.SHUFFLE)
-        repeat_img = self.__get_image(icons.REPEAT)
-        rep_one_img = self.__get_image(icons.REPEAT_ONE)
+        self.shuffle_img = self.__get_image(icons.SHUFFLE)
+        self.repeat_img = self.__get_image(icons.REPEAT)
+        self.rep_one_img = self.__get_image(icons.REPEAT_ONE)
 
         # Create control frame
         control_frame = LabelFrame(
@@ -131,6 +131,10 @@ class MusicPlayer:
 
         next_btn = self.__create_button(control_frame, image=next_img)
         next_btn.bind('<Button-1>', self.next)
+
+        self.shuffle_btn = self.__create_button(
+            control_frame, image=self.repeat_img, padx=13)
+        self.shuffle_btn.bind('<Button-1>', self.set_music_style)
         # Right side control button
         self.scale = ttk.Scale(control_frame, from_=0, to=100,
                                orient=HORIZONTAL, command=self.set_vol)
@@ -144,7 +148,7 @@ class MusicPlayer:
         self.window.protocol("WM_DELETE_WINDOW", self.exit)
         self.window.mainloop()
 
-    def __create_button(self, root, image, side=LEFT, fill=X, padx=0):
+    def __create_button(self, root, image, side=LEFT, fill=X, padx=2):
         btn = Button(root, image=image, bd=0)
         btn.pack(side=side, fill=fill, padx=padx)
         return btn
@@ -349,6 +353,21 @@ class MusicPlayer:
             self.speaker['image'] = self.mute_img
             mixer.music.set_volume(0.0)
             self.mute = True
+
+    def set_music_style(self, *args):
+        styles = [self.REPEAT_ALL_SONG, self.REPEAT_ONE_SONG, self.RANDOM_SONG]
+        next_style = styles.index(self.play_style) + 1
+        if next_style >= 3:
+            next_style = 0
+
+        if next_style == 0:
+            self.shuffle_btn['image'] = self.repeat_img
+        elif next_style == 1:
+            self.shuffle_btn['image'] = self.rep_one_img
+        else:
+            self.shuffle_btn['image'] = self.shuffle_img
+
+        self.play_style = styles[next_style]
 
     def exit(self):
         self.stop()
