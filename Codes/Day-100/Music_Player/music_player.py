@@ -140,7 +140,7 @@ class MusicPlayer:
 
         self.speaker = self.__create_button(
             control_frame, image=self.speaker_img, side=RIGHT)
-
+        self.speaker.bind('<Button-1>', self.mute_unmute)
         self.window.protocol("WM_DELETE_WINDOW", self.exit)
         self.window.mainloop()
 
@@ -321,18 +321,22 @@ class MusicPlayer:
         return ImageTk.PhotoImage(image)
 
     def set_vol(self, num):
-        if float(num) == 0.0:
-            self.speaker['image'] = self.mute_img
-            mixer.music.set_volume(0.0)
-            self.mute = True
-        elif self.mute == True:
+        if float(num) == 0.0 or self.mute:
+            self.mute_unmute(num)
+        else:
+            volume = float(num) / 100
+            mixer.music.set_volume(volume)
+
+    def mute_unmute(self, num=0, *args):
+        if self.mute:
             self.speaker['image'] = self.speaker_img
             num = self.scale.get()
             mixer.music.set_volume(float(num) / 100)
             self.mute = False
         else:
-            volume = float(num) / 100
-            mixer.music.set_volume(volume)
+            self.speaker['image'] = self.mute_img
+            mixer.music.set_volume(0.0)
+            self.mute = True
 
     def exit(self):
         self.stop()
