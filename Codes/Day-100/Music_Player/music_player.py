@@ -62,6 +62,7 @@ class MusicPlayer:
         self.play_thread = None
         self.current_time = 0
         self.play_style = self.REPEAT_ALL_SONG
+        self.mute = False
 
         # create main window
         self.window = Tk()
@@ -132,7 +133,7 @@ class MusicPlayer:
         next_btn.bind('<Button-1>', self.next)
         # Right side control button
         self.scale = ttk.Scale(control_frame, from_=0, to=100,
-                               orient=HORIZONTAL)
+                               orient=HORIZONTAL, command=self.set_vol)
         self.scale.set(70)
         mixer.music.set_volume(0.7)
         self.scale.pack(side=RIGHT, fill=X, padx=10)
@@ -318,6 +319,20 @@ class MusicPlayer:
         image = Image.open(image_path)
         image = image.resize((350, 350), Image.ANTIALIAS)
         return ImageTk.PhotoImage(image)
+
+    def set_vol(self, num):
+        if float(num) == 0.0:
+            self.speaker['image'] = self.mute_img
+            mixer.music.set_volume(0.0)
+            self.mute = True
+        elif self.mute == True:
+            self.speaker['image'] = self.speaker_img
+            num = self.scale.get()
+            mixer.music.set_volume(float(num) / 100)
+            self.mute = False
+        else:
+            volume = float(num) / 100
+            mixer.music.set_volume(volume)
 
     def exit(self):
         self.stop()
